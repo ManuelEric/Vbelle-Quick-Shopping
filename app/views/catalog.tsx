@@ -35,10 +35,6 @@ export function Catalog() {
     const [isCheckoutOpen, setIsCheckoutOpen] = useState(false);
 
     const [searchTerm, setSearchTerm] = useState("");
-
-    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearchTerm(e.target.value)
-    }
     
     return (
         <div>
@@ -56,7 +52,7 @@ export function Catalog() {
 
                     {/* Search Bar */}
                     <div className="w-full sm:w-1/2 order-2 sm:order-1">
-                        <SearchBar searchTerm={searchTerm} handleChange={handleChange} />
+                        <SearchBar searchTerm={searchTerm} handleChange={(val: string) => setSearchTerm(val)} />
                     </div>
 
                     {/* Buttons */}
