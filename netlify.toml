@@ -1,0 +1,15 @@
+[build]
+  command = "npm run build"
+  publish = "build/client"        # React Router static assets
+  functions = "build/server"      # SSR server output
+
+[dev]
+  command = "npm run dev"         # runs `react-router dev`
+  port = 8888                     # Netlify proxy (you open this in browser)
+  targetPort = 5173               # React Router dev server
+  autoLaunch = true               # auto-open browser
+
+[[redirects]]
+  from = "/*"
+  to = "/.netlify/functions/server"
+  status = 200

@@ -6,7 +6,7 @@ import { formatRupiah } from "@/utils/formatRupiah";
 import { Timestamp } from "firebase/firestore";
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle, TransitionChild } from '@headlessui/react'
 import { XMarkIcon } from '@heroicons/react/24/outline';
-import { ToastContainer, toast } from 'react-toastify';
+import { ToastContainer, Bounce, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 type Props = {
@@ -328,6 +328,19 @@ export default function OrdersList({ activeTab: activeTab } : Props) {
                     </div>
                 </div>
             </Dialog>
+            <ToastContainer
+                position="top-center"
+                autoClose={5000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+                />
         </div>
     )
 }

@@ -40,6 +40,7 @@ export function Login() {
         } catch (err: any) {
             setError("Login failed: " + err.message);
         }
+        setIsLoading(false);
     }
 
     return (
