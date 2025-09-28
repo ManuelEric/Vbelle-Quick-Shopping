@@ -1,9 +1,10 @@
 # wrangler.toml
 name = 'vbelle-store'
 compatibility_date = "2024-09-01"
+main = "worker.ts" # Worker entrypoint after build
 
 [site]
-bucket = "./build/client"
+bucket = "./build/client" # static assets
 
 [build]
 command = "npm run build"
