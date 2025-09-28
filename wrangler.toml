@@ -12,3 +12,5 @@ command = "npm run build"
 [pages]
 # Cloudflare Pages Functions entrypoint
 functions = "./functions"
+
+nodejs_compat = true

@@ -10,6 +10,5 @@ export default defineConfig({
     reactRouter(), 
     tsconfigPaths(),
     // netlify()
-  ],
-  base: '/Vbelle-Quick-Shopping/'
+  ]
 });

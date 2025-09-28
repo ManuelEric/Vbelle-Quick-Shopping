@@ -2,7 +2,6 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://manueleric.github.io/Vbelle-Quick-Shopping/",
   "type": "module",
   "scripts": {
     "build": "react-router build",
@@ -13,6 +12,10 @@
     "deploy": "gh-pages -d build/client",
     "deploy:netlify": "netlify deploy --prod",
     "deploy:cloudflare": "wrangler pages deploy ./build/client --compatibility-date=2024-09-01"
+  },
+  "reactRouter": {
+    "serverEntry": "worker.ts",
+    "platform": "cloudflare"
   },
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
