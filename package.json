@@ -10,7 +10,7 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build",
+    "deploy": "gh-pages -d build/client",
     "deploy:netlify": "netlify deploy --prod",
     "deploy:cloudflare": "wrangler pages deploy ./build/client --compatibility-date=2024-09-01"
   },
