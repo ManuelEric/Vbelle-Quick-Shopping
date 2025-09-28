@@ -1,0 +1,12 @@
+name = "my-react-router-app"
+compatibility_date = "2024-09-01"
+
+[site]
+bucket = "./build/client"
+
+[build]
+command = "npm run build"
+
+[pages]
+# Cloudflare Pages Functions entrypoint
+functions = "./functions"

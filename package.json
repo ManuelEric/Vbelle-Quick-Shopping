@@ -2,7 +2,7 @@
   "name": "client",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://vbelle.store",
+  "homepage": "https://manueleric.github.io/Vbelle-Quick-Shopping/",
   "type": "module",
   "scripts": {
     "build": "react-router build",
@@ -10,7 +10,9 @@
     "start": "react-router-serve ./build/server/index.js",
     "typecheck": "react-router typegen && tsc",
     "predeploy": "npm run build",
-    "deploy:netlify": "netlify deploy --prod"
+    "deploy": "gh-pages -d build",
+    "deploy:netlify": "netlify deploy --prod",
+    "deploy:cloudflare": "wrangler pages deploy ./build/client --compatibility-date=2024-09-01"
   },
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
@@ -18,6 +20,7 @@
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-label": "^2.1.7",
+    "@react-router/cloudflare": "^7.9.3",
     "@react-router/node": "^7.7.1",
     "@react-router/serve": "^7.7.1",
     "class-variance-authority": "^0.7.1",

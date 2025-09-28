@@ -9,6 +9,7 @@ export default defineConfig({
     tailwindcss(), 
     reactRouter(), 
     tsconfigPaths(),
-    netlify()
+    // netlify()
   ],
+  base: '/Vbelle-Quick-Shopping/'
 });
