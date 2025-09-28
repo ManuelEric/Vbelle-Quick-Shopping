@@ -7,6 +7,7 @@ import type { Product } from "../types/product";
 import SearchBar from "./components/search-bar";
 import CheckOrder from "./components/check-order";
 import FloatingRequestButton from './components/floating-request-button';
+import { Bounce, ToastContainer } from 'react-toastify';
 
 export function Catalog() {
     
@@ -41,6 +42,19 @@ export function Catalog() {
             {/* Floating button */}
             <FloatingRequestButton />
 
+            <ToastContainer
+                position="top-center"
+                autoClose={2000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="light"
+                transition={Bounce}
+                />
 
             <header className="bg-white shadow-sm">
             <div className="max-w-7xl mx-auto px-4 py-4 sm:px-6 lg:px-8">

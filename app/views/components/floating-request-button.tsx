@@ -1,7 +1,6 @@
 // components/FloatingRequestButton.tsx
 import { useState } from 'react';
 import RequestModal from "@/views/components/request-modal";
-import { Bounce, ToastContainer, toast } from 'react-toastify';
 
 export default function FloatingRequestButton() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
@@ -11,7 +10,7 @@ export default function FloatingRequestButton() {
       <button
         onClick={() => setIsOpen(true)}
         className="fixed cursor-pointer bottom-6 right-6 bg-indigo-600 text-white p-4 rounded-full shadow-lg hover:bg-indigo-700 transition"
-        aria-label="Request Product"
+        aria-label="Request Product" title="Request item yang kamu mau"
       >
         {/* Paper Plane Icon */}
         <svg
@@ -32,19 +31,6 @@ export default function FloatingRequestButton() {
       {/* Modal */}
       <RequestModal isOpen={isOpen} onClose={() => setIsOpen(false)} />
 
-      <ToastContainer
-        position="top-center"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick={false}
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-        transition={Bounce}
-        />
     </>
   );
 }

@@ -1,8 +1,7 @@
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "firebaseConfig";
 import { useEffect, useState } from "react";
 import { formatRupiah } from "@/utils/formatRupiah";
 import { loadProductsRealtime } from "@/hooks/useProduct";
+import { toast } from 'react-toastify';
 
 interface Product {
     id: string;
@@ -14,6 +13,7 @@ interface Product {
     Description: string;
     Image: string;
     Quantity: number;
+    Halal?: string;
 }
 
 interface ProductsGridProps {
@@ -88,23 +88,29 @@ export default function ProductsGrid({
                 return [...prevItems, { ...product, Quantity: 1 }];
             }
         });
+        toast.success("Item berhasil dimasukkan ke keranjang.");
     }
 
     return (
         <>
         {/* Add skeleton loader */}
-        {isLoading ? 
+        {(isLoading || filteredProducts.length === 0) ? (
             <div id="productsGrid" className="grid grid-colstn-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                 {[...Array(4)].map((_, i) => (
                 <div key={i} className="bg-gray-200 rounded-lg h-64 animate-pulse"></div>
                 ))}
             </div>
-        : <div id="productsGrid" className="grid grid-colstn-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
+        ) : (
+            <div id="productsGrid" className="grid grid-colstn-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-4 md:gap-6">
                 {/* Products will be inserted here by JavaScript */}
                 {filteredProducts.map((product, index) => (
                     <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md sm:shadow hover:shadow-lg transition-shadow">
                         <div className="p-4">
                             <div className="h-36 sm:h-48 overflow-hidden rounded-lg cursor-pointer">
+                                {product.Halal == "Halal" ? 
+                                (<img src="./img/halal.png" className="absolute w-10 bg-green-100" />)
+                                : ''
+                                }
                                 <img
                                     onClick={() => setSelectedImage(product.Image)}
                                     src={product.Image ?? "https://storage.googleapis.com/workspace-0f70711f-8b4e-4d94-86f1-2a93ccde5887/image/36cbede6-cca8-4f15-8343-4a6656da4493.png"} alt="Product thumbnail" className="h-full w-full object-cover" />
@@ -119,7 +125,7 @@ export default function ProductsGrid({
                     </div>
                 ))}
             </div>
-        }
+        )}
 
         {/* Image Zoom Modal */}
         {selectedImage && (
@@ -145,6 +151,7 @@ export default function ProductsGrid({
                 </div>
             </div>
         )}
+        
         </>
     )
 }

@@ -10,6 +10,7 @@ interface Product {
     CategoryID: string;
     Description: string;
     Image: string;
+    Halal: string;
     Quantity: number;
     CreatedAt: Timestamp;
     UpdatedAt: Timestamp;

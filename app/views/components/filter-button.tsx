@@ -71,7 +71,7 @@ export default function FilterButton({selectedCategory, setSelectedCategory}: {s
     return (
         <>
         {/* Add skeleton loader */}
-        {isLoading ? 
+        {(isLoading || categories.length === 0) ? ( 
             <div className="mb-8">
                 <h2 className="text-2xl font-bold mb-4">Cari Produk</h2>
                 <div className="flex space-x-1 sm:space-x-2 overflow-x-auto pb-2">
@@ -83,7 +83,7 @@ export default function FilterButton({selectedCategory, setSelectedCategory}: {s
                     ))}
                 </div>
             </div>
-            :
+            ) : (
             <div className="mb-8">
                 <h2 className="text-2xl font-bold mb-4">Cari Produk</h2>
                 <div className="flex space-x-1 sm:space-x-2 overflow-x-auto pb-2">
@@ -101,6 +101,7 @@ export default function FilterButton({selectedCategory, setSelectedCategory}: {s
                 })}
                 </div>
             </div>
+            )
         }
         </>
     );

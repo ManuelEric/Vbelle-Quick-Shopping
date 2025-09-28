@@ -6,6 +6,7 @@ import { getStorage, ref as storageRef, uploadBytes, getDownloadURL } from "fire
 import { Bounce, ToastContainer, toast } from 'react-toastify';
 import type { Product } from "@/types/product";
 import 'react-toastify/dist/ReactToastify.css';
+import { formatRupiah } from "@/utils/formatRupiah";
 
 type Props = {
     activeTab?: string
@@ -377,6 +378,7 @@ export default function FormProduct({ activeTab = "products" }: Props) {
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Sell Price</th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Description</th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Category</th>
+                                <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Halal/Non Halal</th>
                                 <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Action</th>
                             </tr>
                         </thead>
@@ -387,11 +389,12 @@ export default function FormProduct({ activeTab = "products" }: Props) {
                                         <img src={product.Image} alt={product.Name + ' product image'} className="h-10 w-10 rounded-md object-cover" />
                                     </td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-900">{product.Name}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rp. {product.ActualPrice}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rp. {product.OfferPrice}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">Rp. {product.SellPrice}</td>
-                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.Description}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatRupiah(product.ActualPrice)}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatRupiah(product.OfferPrice)}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{formatRupiah(product.SellPrice)}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{(product.Description).substring(0, 50)}...</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{categories.find(c => c.id === product.CategoryID)?.Name ?? '-'}</td>
+                                    <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{product.Halal}</td>
                                     <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
                                         <button type="button" onClick={(e) => handleEditProduct(product.id, e)} className="bg-gray-500 px-4 py-1 text-white rounded-l-lg cursor-pointer">Edit</button>
                                         <button type="button" onClick={(e) => handleDeleteProduct(product.id, e)} className="bg-red-500 px-4 py-1 text-white rounded-r-lg cursor-pointer">Delete</button>
