@@ -11,4 +11,10 @@ export default defineConfig({
     tsconfigPaths(),
     netlify()
   ],
+  server: {
+    allowedHosts: [
+      "devserver-production--vbelle.netlify.app",
+      "vbelle.store"
+    ]
+  }
 });

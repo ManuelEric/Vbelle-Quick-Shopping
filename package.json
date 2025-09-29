@@ -25,6 +25,7 @@
     "gsap": "^3.13.0",
     "isbot": "^5.1.27",
     "lucide-react": "^0.542.0",
+    "netlify-cli": "^23.8.1",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
     "react-router": "^7.7.1",
