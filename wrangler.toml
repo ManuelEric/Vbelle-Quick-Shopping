@@ -1,16 +1,14 @@
 # wrangler.toml
 name = 'vbelle-store'
-compatibility_date = "2024-09-01"
+compatibility_flags = [ "nodejs_compat" ]
+compatibility_date = "2024-09-23"
 main = "worker.ts" # Worker entrypoint after build
 
-[site]
-bucket = "./build/client" # static assets
+# wrangler.toml (wrangler v3.88.0^)
+[observability.logs]
+enabled = true
 
-[build]
-command = "npm run build"
-
-[pages]
-# Cloudflare Pages Functions entrypoint
-functions = "./functions"
-
-nodejs_compat = true
+[[workflows]]
+name = "my-workflow"
+binding = "MY_WORKFLOW"
+class_name = "MyWorkflow"

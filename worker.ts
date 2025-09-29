@@ -1,5 +1,3 @@
-import { createRequestHandler } from "@react-router/cloudflare";
-// @ts-expect-error - no types for the build output
-import * as build from "./build/server";
+import handler from "./app/entry.server";
 
-export default createRequestHandler({ build });
+export default handler;

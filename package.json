@@ -6,7 +6,7 @@
   "scripts": {
     "build": "react-router build",
     "dev": "react-router dev",
-    "start": "react-router-serve ./build/server/index.js",
+    "start": "wrangler dev",
     "typecheck": "react-router typegen && tsc",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build/client",
@@ -14,8 +14,8 @@
     "deploy:cloudflare": "wrangler pages deploy ./build/client --compatibility-date=2024-09-01"
   },
   "reactRouter": {
-    "serverEntry": "worker.ts",
-    "platform": "cloudflare"
+    "platform": "cloudflare",
+    "serverEntry": "entry.server.tsx"
   },
   "dependencies": {
     "@cloudinary/react": "^1.14.3",
@@ -23,8 +23,6 @@
     "@headlessui/react": "^2.2.7",
     "@heroicons/react": "^2.2.0",
     "@radix-ui/react-label": "^2.1.7",
-    "@react-router/node": "^7.9.3",
-    "@react-router/serve": "^7.9.3",
     "class-variance-authority": "^0.7.1",
     "firebase": "^12.1.0",
     "gsap": "^3.13.0",
@@ -37,6 +35,7 @@
     "tailwind-merge": "^3.3.1"
   },
   "devDependencies": {
+    "@cloudflare/vite-plugin": "^1.13.7",
     "@cloudflare/workers-types": "^4.20250927.0",
     "@netlify/vite-plugin-react-router": "^1.0.1",
     "@react-router/cloudflare": "^7.9.3",
@@ -49,6 +48,7 @@
     "tailwindcss": "^4.1.4",
     "typescript": "^5.8.3",
     "vite": "^6.3.3",
-    "vite-tsconfig-paths": "^5.1.4"
+    "vite-tsconfig-paths": "^5.1.4",
+    "wrangler": "^4.40.2"
   }
 }
